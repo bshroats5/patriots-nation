@@ -32,7 +32,7 @@ nav a {
 }
 
 nav a:hover {
-    color: #ff5722;
+    color: #b1b1b1;
 }
 
 section {
@@ -49,7 +49,7 @@ section h2 {
 
 footer {
     background-color: #00487c;
-    color: #ffffff;
+    color: #cdcdcd;
     text-align: center;
     padding: 10px;
     position: fixed;
