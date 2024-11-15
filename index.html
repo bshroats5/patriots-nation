@@ -1,46 +1,14 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cumberlands Patriots</title>
-    <link rel="stylesheet" href="styles.css">
-</head>
-<body>
-    <header>
-        <h1>Pats Country</h1>
-        <nav>
-            <ul>
-                <li><a href="#home">Home</a></li>
-                <li><a href="#schedule">Schedule</a></li>
-                <li><a href="#news">News</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-        </nav>
-    </header>
-    <main>
-        <section id="home">
-            <h2>Welcome to the Cumberlands Patriots Fan Site</h2>
-            <p>Stay updated with the latest news and events.</p>
-        </section>
-        <section id="schedule">
-            <h2>Game Schedule</h2>
-            <p>Check out our upcoming games!</p>
-            <!-- Add schedule here -->
-        </section>
-        <section id="news">
-            <h2>Latest News</h2>
-            <p>Read the latest updates about the team.</p>
-            <!-- Add news articles here -->
-        </section>
-        <section id="contact">
-            <h2>Contact Us</h2>
-            <p>Get in touch with us!</p>
-            <!-- Add contact form or information here -->
-        </section>
-    </main>
-    <footer>
-        <p>&copy; 2025 Pats Country. All rights reserved.</p>
-    </footer>
-</body>
-</html>
+{% extends "base.html" %}
+
+{% block content %}
+<section id="blog-posts">
+    {% for post in posts %}
+    <article class="post">
+        <h2><a href="{{ url_for('post', slug=post.slug) }}">{{ post.title }}</a></h2>
+        <p class="meta">Posted on {{ post.date }} by {{ post.author }}</p>
+        <p>{{ post.content }}</p>
+        <a href="{{ url_for('post', slug=post.slug) }}" class="read-more">Read More</a>
+    </article>
+    {% endfor %}
+</section>
+{% endblock %}
