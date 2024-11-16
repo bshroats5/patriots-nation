@@ -1,9 +1,14 @@
-{% extends "base.html" %}
-
-{% block content %}
-<article>
-    <h2>{{ post.title }}</h2>
-    <p class="meta">Posted on {{ post.date }} by {{ post.author }}</p>
-    <p>{{ post.content }}</p>
-</article>
-{% endblock %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ post.title }}</title>
+</head>
+<body>
+    <h1>{{ post.title }}</h1>
+    <p><strong>Date:</strong> {{ post.date }}</p>
+    <p><strong>Author:</strong> {{ post.author }}</p>
+    <p>{{ post.content.replace('\n', '<br>')|safe }}</p>
+</body>
+</html>

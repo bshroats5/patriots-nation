@@ -1,16 +1,21 @@
 from flask import Flask, render_template
-import os
 
 app = Flask(__name__)
 
-# Sample data for blog posts
 posts = [
     {
         'title': 'Soccer teams win MSC Championships',
         'date': 'November 14, 2024',
         'author': 'Bret Shroats',
-        'content': 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus lacinia odio vitae vestibulum.',
-        'slug': 'exciting-game-highlights'
+        'content': (
+            "The men's and women's soccer teams both won the MSC Championships this year.\n"
+            "The men's team won 4-2 in penalty kicks against the Lindsey Wilson Blue Raiders, "
+            "and the women's team won 2-0 against Cumberland University.\n"
+            "Both teams will advance to the NAIA National Championships in Orange Beach, Alabama.\n"
+            "The men's team will play their first game on November 18, and the women's team will play their first game on November 19.\n"
+            "Go Knights!"
+        ),
+        'slug': 'Soccer-teams-win-MSC-Championships'
     },
     {
         'title': 'Player Spotlight: John Doe',
@@ -21,13 +26,11 @@ posts = [
     }
 ]
 
-@app.route('/')
-def index():
-    return render_template('index.html', posts=posts)
-
 @app.route('/post/<slug>')
 def post(slug):
-    post = next((p for p in posts if p['slug'] == slug), None)
+    post = next((item for item in posts if item["slug"] == slug), None)
+    if post is None:
+        return "Post not found", 404
     return render_template('post.html', post=post)
 
 if __name__ == '__main__':
