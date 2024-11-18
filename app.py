@@ -9,9 +9,6 @@ posts = [
         'title': 'Exciting Game Highlights',
         'date': 'January 1, 2023',
         'author': 'Author Name',
-        'title': 'Soccer teams win MSC Championships',
-        'date': 'November 14, 2024',
-        'author': 'Bret Shroats',
         'content': 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus lacinia odio vitae vestibulum.',
         'slug': 'exciting-game-highlights'
     },
@@ -34,3 +31,4 @@ def post(slug):
     return render_template('post.html', post=post)
 
 if __name__ == '__main__':
+    app.run(debug=True)
