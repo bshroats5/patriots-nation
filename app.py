@@ -42,5 +42,15 @@ def about():
 def contact():
     return render_template('contact.html')
 
+# Suggested change in app.py for single post view
+@app.route('/post/<slug>') # Route accepts a slug from the URL
+def view_post(slug):       # Function is named 'view_post' and accepts slug
+    post_to_show = next((p for p in posts if p['slug'] == slug), None)
+    if post_to_show:
+        return render_template('post.html', post=post_to_show)
+    else:
+        from flask import abort
+        abort(404) # Or render a custom 404 template
+
 if __name__ == '__main__':
     app.run(debug=True)
