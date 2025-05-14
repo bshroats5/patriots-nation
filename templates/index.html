@@ -1,16 +1,12 @@
-<!-- templates/index.html -->
 {% extends "base.html" %}
-
-{% block title %}Cumberlands Patriots Blog{% endblock %}
-
-{% block header %}
 {% block content %}
 <section id="blog-posts">
+    <h2>Latest Posts</h2>
     {% for post in posts %}
     <article class="post">
-        <h2><a href="{{ url_for('view_post', slug=post.slug) }}">{{ post.title }}</a></h2>
+        <h3><a href="{{ url_for('view_post', slug=post.slug) }}">{{ post.title }}</a></h3>
         <p class="meta">Posted on {{ post.date }} by {{ post.author }}</p>
-        <p>{{ post.content }}</p>
+        <p>{{ post.content[:200] }}...</p> <!-- Example: show first 200 chars -->
         <a href="{{ url_for('view_post', slug=post.slug) }}" class="read-more">Read More</a>
     </article>
     {% endfor %}
