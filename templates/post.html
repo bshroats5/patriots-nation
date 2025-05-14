@@ -7,6 +7,15 @@
     <title>{{ post.title }}</title>
 </head>
 <body>
+    <header>
+        <h1>Cumberlands Patriots Blog</h1>
+        <nav>
+            <ul>
+                <li><a href="{{ url_for('index') }}">Home</a></li>
+                <li><a href="{{ url_for('about') }}">About</a></li>
+                <li><a href="{{ url_for('contact') }}">Contact</a></li>
+            </ul>
+        </nav>
     <h1>{{ post.title }}</h1>
     <p><strong>Date:</strong> {{ post.date }}</p>
     <p><strong>Author:</strong> {{ post.author }}</p>
